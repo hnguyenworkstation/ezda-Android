@@ -1,0 +1,6 @@
+INDEX VERSION 1.3+/Users/hungnguyen/Desktop/ezda-Android/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1231295632.index
+3741885072.index
+1645214708.index
+1053403266.index
+98806575.index

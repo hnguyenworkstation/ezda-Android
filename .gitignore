@@ -13,6 +13,9 @@ bin/
 gen/
 out/
 
+# Server folder
+Servers/
+
 # Gradle files
 .gradle/
 build/

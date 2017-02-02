@@ -23,7 +23,6 @@ import us.hungnguyen.ezda.R;
 * */
 
 public class TabView extends LinearLayout {
-
     private ImageView mImageView;
     private TextView mTextView;
 
@@ -46,7 +45,6 @@ public class TabView extends LinearLayout {
         int pad = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources()
                 .getDisplayMetrics());
 
-
         mImageView = new ImageView(context);//dynamically create an object of imageView and setting param into it...
         mImageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         mImageView.setScaleType(ScaleType.CENTER_INSIDE);
@@ -57,14 +55,11 @@ public class TabView extends LinearLayout {
         mTextView.setCompoundDrawablePadding(pad);
         mTextView.setTextAppearance(context, txtstyle);
 
-
         this.addView(mImageView);// adding the imageview object into view
         this.addView(mTextView);// adding textview object into view
         this.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));//setting param into view
 
         this.setBackgroundResource(R.drawable.list_selector_white);//setting ripple animation into this View.
-
-
     }
 
     public void setIcon(int resId) {

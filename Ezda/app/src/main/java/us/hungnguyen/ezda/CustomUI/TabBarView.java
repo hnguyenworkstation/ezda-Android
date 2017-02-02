@@ -5,9 +5,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout;
@@ -22,22 +24,17 @@ import us.hungnguyen.ezda.R;
 * */
 
 public class TabBarView extends LinearLayout {
-    //strip height has defined here
     private static final int STRIP_HEIGHT = 6;
     public static int mSelectedTab = 0;
     public static int tabCount;//hold the number of tabs
     public static int a;
     public final Paint mPaint;
-    //this pager will hold the instance of viewPager
-    //and rearrange the pages using the object
     public ViewPager pager;
     public OnPageChangeListener delegatePageListener;
-    // TabView class objects
-    private TabView tabView1, tabView2, tabView3;
+    private TabView tabView1, tabView2, tabView3, tabView4;
     private int mStripHeight;
     private float mOffset = 0f;
     private View child;
-
     private View nextChild;
 
     public TabBarView(Context context) {
@@ -153,17 +150,22 @@ public class TabBarView extends LinearLayout {
             tabView1.setAlpha(1.0f);
             tabView2.setAlpha(0.5f);
             tabView3.setAlpha(0.5f);
-
+            //tabView4.setAlpha(0.5f);
         } else if (position == 1) {
             tabView1.setAlpha(0.5f);
             tabView2.setAlpha(1.0f);
             tabView3.setAlpha(0.5f);
-
+            //tabView4.setAlpha(0.5f);
         } else if (position == 2) {
             tabView1.setAlpha(0.5f);
             tabView2.setAlpha(0.5f);
             tabView3.setAlpha(1.0f);
-
+            //tabView4.setAlpha(0.5f);
+        } else if ( position == 3) {
+            tabView1.setAlpha(0.5f);
+            tabView2.setAlpha(0.5f);
+            tabView3.setAlpha(0.5f);
+            //tabView4.setAlpha(1.0f);
         }
     }
 
@@ -185,15 +187,11 @@ public class TabBarView extends LinearLayout {
 
     // it will remove all previous views and creating new view for tab
     public void notifyDataSetChanged() {
-
         int resId;
-
         this.removeAllViews();
-
         tabCount = pager.getAdapter().getCount();
 
         for (int i = 0; i < tabCount; i++) {
-
             resId = ((IconTabProvider) pager.getAdapter()).getPageIconResId(i);
 
             if (getResources().getConfiguration().orientation == 1)
@@ -203,16 +201,11 @@ public class TabBarView extends LinearLayout {
         }
 
         //removing swiping animation effect from viewPager
-
-
         getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-
             @SuppressLint("NewApi")
             @Override
             public void onGlobalLayout() {
-
                 getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
                 mSelectedTab = pager.getCurrentItem();
 
             }
@@ -241,14 +234,11 @@ public class TabBarView extends LinearLayout {
 
         if (i == 0) {
             tabView1 = new TabView(getContext());
-
             tabView1.setIcon(pageIconResId);
             tabView1.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     pager.setCurrentItem(i);
-
-
                 }
             });
             CheatSheet.setup(tabView1, string);
@@ -278,8 +268,6 @@ public class TabBarView extends LinearLayout {
             CheatSheet.setup(tabView3, string);
             this.addView(tabView3);
         }
-
-
     }
 
     //used to set the properties for portrait screen like icon and click-event into tabView objects

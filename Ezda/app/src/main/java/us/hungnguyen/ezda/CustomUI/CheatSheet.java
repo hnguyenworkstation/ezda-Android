@@ -2,6 +2,7 @@ package us.hungnguyen.ezda.CustomUI;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.support.v4.view.GravityCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;

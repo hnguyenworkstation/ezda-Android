@@ -21,14 +21,19 @@ import android.os.Bundle;
 
 import us.hungnguyen.ezda.CustomUI.CustomViewPager;
 import us.hungnguyen.ezda.CustomUI.TabBarView;
+import us.hungnguyen.ezda.EZDA.BaseActivity;
 import us.hungnguyen.ezda.Fragments.ChatFragment;
 import us.hungnguyen.ezda.Fragments.ConnectFragment;
+import us.hungnguyen.ezda.Fragments.DiscoverFragment;
+import us.hungnguyen.ezda.Fragments.ProfileFragment;
 
 /*
     Forked by HomeActivity from TinderView of Aradh Pillai
     Credit goes to Aradh Pillai https://github.com/GadgetCheck/TinderView
 */
-public class MainActivity extends AppCompatActivity implements ChatFragment.OnFragmentInteractionListener {
+public class MainActivity extends BaseActivity
+        implements ChatFragment.OnFragmentInteractionListener,
+        DiscoverFragment.OnFragmentInteractionListener {
 
     //this context using in
     public static Context context;
@@ -41,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements ChatFragment.OnFr
     private TabBarView mTabBarView;
     private MainScreenPagerAdapter mMainScreenPagerAdapter;
     //Data
-    private int PAGE_COUNT = 3;
+    private int PAGE_COUNT = 4;
 
 
     @Override
@@ -50,13 +55,6 @@ public class MainActivity extends AppCompatActivity implements ChatFragment.OnFr
 
         Log.i(TAG, "MainScreenActivity: onCreate()");
         context = this;
-        //using sharedPreference to check whether this is using first time on not...
-        //even this app is starting first time than from here it will call the OnBoardActivity and updated the value
-        //even this app is already started than this screen will work...
-
-        //from here it's started
-
-        //setting the layout
         setContentView(R.layout.activity_main);
 
         //checking sdk version and giving shadow effect
@@ -113,8 +111,6 @@ public class MainActivity extends AppCompatActivity implements ChatFragment.OnFr
 
         //Setting the CustomizedViewPager into Toolbar for tabOption
         mTabBarView.setViewPager(mViewPager);
-
-
     }
 
 
@@ -176,7 +172,8 @@ public class MainActivity extends AppCompatActivity implements ChatFragment.OnFr
         private int[] tab_icons = {
                 R.drawable.ic_connect,
                 R.drawable.ic_list,
-                R.drawable.ic_chat
+                R.drawable.ic_chat,
+                R.drawable.ic_account_circle_white_24dp
         };
 
         public MainScreenPagerAdapter(FragmentManager fm) {
@@ -191,7 +188,11 @@ public class MainActivity extends AppCompatActivity implements ChatFragment.OnFr
                 case 0:
                     return new ConnectFragment();
                 case 1:
+                    return new DiscoverFragment();
+                case 2:
                     return new ChatFragment();
+                case 3:
+                    return new ProfileFragment();
                 default:
                     return null;
             }
@@ -202,7 +203,6 @@ public class MainActivity extends AppCompatActivity implements ChatFragment.OnFr
         public int getCount() {
             return PAGE_COUNT;
         }
-
 
         //this is TabBarView.IconTabProvider's method to return the position of icon to load into tabBar of Toolbar
         @Override
@@ -219,6 +219,8 @@ public class MainActivity extends AppCompatActivity implements ChatFragment.OnFr
                     return "Discover";
                 case 2:
                     return "Chat";
+                case 3:
+                    return "Profile";
             }
             return null;
         }

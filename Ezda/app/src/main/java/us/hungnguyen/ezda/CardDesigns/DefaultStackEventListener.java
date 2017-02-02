@@ -19,7 +19,6 @@ public class DefaultStackEventListener implements CardStack.CardEventListener {
 
     @Override
     public boolean swipeStart(int section, float distance) {
-
         return true;
     }
 

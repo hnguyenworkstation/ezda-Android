@@ -18,4 +18,5 @@ and CardStack-->
         android:paddingTop="30dp" />
 
     <include layout="@layout/background_ripple_layout"/>
+
 </FrameLayout>

@@ -37,15 +37,10 @@ public class CardStack extends RelativeLayout {
         }
     };
 
-
-    //return the current index of card
-
     //only necessary when I need the attrs from xml, this will be used when inflating layout
     public CardStack(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-
-        //get attrs assign minVisiableNum
         for (int i = 0; i < mNumVisible; i++) {
             addContainerViews();
         }
@@ -64,7 +59,6 @@ public class CardStack extends RelativeLayout {
                 mIndex++;
                 mEventListener.discarded(mIndex, direction);
 
-                //mIndex = mIndex%mAdapter.getCount();
                 loadLast();
 
                 viewCollection.get(0).setOnTouchListener(null);
@@ -111,11 +105,6 @@ public class CardStack extends RelativeLayout {
         reset(false);
     }
 
-
-    //setting the card animator and putting GestureDetectorListener and overriding the methods of DragListener interface
-    //using this method can get to know the dragged card location
-    //see the animation effect on that selected card
-
     public void setThreshold(int t) {
         mEventListener = new DefaultStackEventListener(t);
     }
@@ -124,9 +113,6 @@ public class CardStack extends RelativeLayout {
         mEventListener = cel;
     }
 
-
-    //ArrayList
-
     private void setupAnimation() {
         final View cardView = viewCollection.get(viewCollection.size() - 1);
         mCardAnimator = new CardAnimator(viewCollection); //creating an object of cardAnimator
@@ -134,8 +120,6 @@ public class CardStack extends RelativeLayout {
 
         final DragGestureDetector dd = new DragGestureDetector(CardStack.this.getContext(), new DragGestureDetector.DragListener() {
 
-
-            //when drag of card will start this method invoke first
             @Override
             public boolean onDragStart(MotionEvent e1, MotionEvent e2,
                                        float distanceX, float distanceY) {
@@ -143,7 +127,6 @@ public class CardStack extends RelativeLayout {
                 return true;
             }
 
-            //user dragging the card continue then this method will invoke
             @Override
             public boolean onDragContinue(MotionEvent e1, MotionEvent e2,
                                           float distanceX, float distanceY) {
@@ -158,10 +141,6 @@ public class CardStack extends RelativeLayout {
                 return true;
             }
 
-            /*when user dum the card then this method will invoke
-            * here it will check the distance between the direction and the distance of the card
-            *and based on that this method discard or reverse the card
-            */
             @Override
             public boolean onDragEnd(MotionEvent e1, MotionEvent e2) {
                 //reverse(e1,e2);
@@ -220,7 +199,6 @@ public class CardStack extends RelativeLayout {
         cardView.setOnTouchListener(mOnTouchListener);
     }
 
-    //used to set Adapter
     public void setAdapter(final ArrayAdapter<?> adapter) {
         if (mAdapter != null) {
             mAdapter.unregisterDataSetObserver(mOb);
@@ -231,8 +209,6 @@ public class CardStack extends RelativeLayout {
         loadData();
     }
 
-    //call to load data based on index
-    //this method will put Gone or visible property to view...
     private void loadData() {
         for (int i = mNumVisible - 1; i >= 0; i--) {
             ViewGroup parent = (ViewGroup) viewCollection.get(i);
@@ -247,7 +223,6 @@ public class CardStack extends RelativeLayout {
         }
     }
 
-    //returning a new view even
     private View getContentView() {
         View contentView = null;
         if (mContentResource != 0) {

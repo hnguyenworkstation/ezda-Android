@@ -23,13 +23,10 @@ public class CardStack extends RelativeLayout {
     private int mNumVisible = 4;
     private ArrayAdapter<?> mAdapter;
     private OnTouchListener mOnTouchListener;
-    //private Queue<View> mIdleStack = new Queue<View>;
     private CardAnimator mCardAnimator;
     private CardEventListener mEventListener = new DefaultStackEventListener(10);
     private int mContentResource = 0;
 
-    //method used to descard the top view based on direction...which is going to use by other widget
-    //eg: using button we can call this method and we can pass the direction as parameter eg: 0 or 2 to discard the card...
     private DataSetObserver mOb = new DataSetObserver() {
         @Override
         public void onChanged() {
@@ -253,11 +250,6 @@ public class CardStack extends RelativeLayout {
     }
 
     public interface CardEventListener {
-        //section
-        // 0 | 1
-        //--------
-        // 2 | 3
-        // swipe distance, most likely be used with height and width of a view ;
 
         boolean swipeEnd(int section, float distance);
 

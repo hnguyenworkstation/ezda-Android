@@ -6,10 +6,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/orange_primary"
+        android:id="@+id/cardstack_header"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:textSize="28sp"
+            android:text="Hung Nguyen"
+            android:textStyle="bold"
+            android:paddingStart="10dp"
+            android:id="@+id/cardstack_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="LIKED"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:id="@+id/cardstack_likedheader"/>
+
+    </RelativeLayout>
+
+    <us.hungnguyen.ezda.CustomUI.DynamicHeightImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardstack_header"
+        android:id="@+id/cardstack_image"
+        android:src="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"/>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal|top"
+        android:id="@+id/cardstack_footer"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
@@ -20,16 +58,18 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="10dp"
             android:layout_marginStart="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:id="@+id/cardstack_username"
-                android:text="Hung Nguyen"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/grass_light"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:maxLines="2"
                 android:text="Administrator"/>
 
             <LinearLayout
@@ -37,25 +77,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="bottom|center_horizontal"
-                android:gravity="center_horizontal"
+                android:gravity="end"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
                 >
-                <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_media_route_on_01_dark"/>
-                <android.support.design.widget.FloatingActionButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_media_route_on_01_dark"/>
-                <android.support.design.widget.FloatingActionButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_media_route_on_01_dark"/>
-                <android.support.design.widget.FloatingActionButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_media_route_on_01_dark"/>
 
+                <ImageButton
+                    android:id="@+id/cardstack_likeBtn"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_cast_light" />
+
+                <ImageButton
+                    android:id="@+id/cardstack_chatBtn"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_cast_light" />
+
+                <ImageButton
+                    android:id="@+id/cardstack_eyeBtn"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_cast_light" />
             </LinearLayout>
         </LinearLayout>
 
@@ -75,13 +121,5 @@
             android:layout_margin="10dp"
             android:alpha="0" />
 
-        <ImageView
-            android:id="@+id/cardstack_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top|center_horizontal"
-            android:textColor="@android:color/black"
-            android:textSize="40sp"
-            tools:text="@string/hello_world" />
     </FrameLayout>
 </RelativeLayout>

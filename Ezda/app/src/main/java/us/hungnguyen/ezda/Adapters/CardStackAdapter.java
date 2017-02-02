@@ -18,7 +18,7 @@ public class CardStackAdapter extends ArrayAdapter<String> {
     public View getView(int position, final View contentView, ViewGroup parent) {
         //supply the layout for your card
         ImageView v = (ImageView) (contentView.findViewById(R.id.cardstack_image));
-        TextView name = (TextView) (contentView.findViewById(R.id.cardstack_username));
+        TextView name = (TextView) (contentView.findViewById(R.id.cardstack_name));
         name.setText(getItem(position));
         return contentView;
     }

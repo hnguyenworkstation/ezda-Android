@@ -19,4 +19,8 @@
     </declare-styleable>
     <!--close declaration -->
 
+    <declare-styleable name="DynamicHeightImageView">
+        <attr name="heightRatio" format="float" />
+    </declare-styleable>
+
 </resources>
